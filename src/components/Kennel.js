@@ -4,7 +4,7 @@ import LocationList from "./LocationList"
 import AnimalList from "./AnimalList"
 import "../Kennel.css"
 
-class Kennel extends Component {
+export default class Kennel extends Component {
 
     /*
         Although you will eventually be pulling your objects
@@ -29,7 +29,9 @@ class Kennel extends Component {
         { id: 1, name: "Dog" },
         { id: 2, name: "Cat" },
         { id: 3, name: "Goat" },
-        { id: 4, name: "Pig" }
+        { id: 4, name: "Horse" },
+        { id: 5, name: "Taiper" },
+        { id: 6, name: "Pig" }
     ]
 
     ownersFromAPI = [
@@ -41,22 +43,33 @@ class Kennel extends Component {
         { id: 6, name: "Angela Lee" }
     ]
 
+    ownersPetsFromAPI = [
+        {id: 1, ownerId: 1, petId: 6},
+        {id: 2, ownerId: 2, petId: 5},
+        {id: 3, ownerId: 3, petId: 4},
+        {id: 4, ownerId: 3, petId: 6},
+        {id: 5, ownerId: 4, petId: 1},
+        {id: 6, ownerId: 4, petId: 2},
+        {id: 7, ownerId: 4, petId: 3},
+    ]
+
     state = {
         owners: this.ownersFromAPI,
         employees: this.employeesFromAPI,
         locations: this.locationsFromAPI,
-        animals: this.animalsFromAPI
+        animals: this.animalsFromAPI,
+        animalOwners: this.ownersPetsFromAPI,
     }
 
     render() {
         return (
-            <article className="kennel">
+            <section className="Kennel">
                 <LocationList locations={this.state.locations} />
                 <EmployeeList employees={this.state.employees} />
-                <AnimalList animals={this.state.animals} />
-            </article>
+                <AnimalList animals={this.state.animals}
+                            owners={this.state.owners}
+                            animalOwners={this.state.animalOwners} />
+            </section>
         )
     }
 }
-
-export default Kennel
