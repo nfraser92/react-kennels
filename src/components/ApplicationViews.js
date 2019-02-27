@@ -6,85 +6,35 @@ import EmployeeList from "./employee/EmployeeList";
 import OwnerList from "./owner/OwnerList";
 
 class ApplicationViews extends Component {
-  employeesFromAPI = [
-    { id: 1, name: "Jessica Younker" },
-    { id: 2, name: "Jordan Nelson" },
-    { id: 3, name: "Zoe LeBlanc" },
-    { id: 4, name: "Blaise Roberts" }
-  ];
-
-  locationsFromAPI = [
-    { id: 1, name: "Nashville North", address: "500 Circle Way" },
-    { id: 2, name: "Nashville South", address: "10101 Binary Court" }
-  ];
-
-  animalsFromAPI = [
-    { id: 1, name: "Doodles" },
-    { id: 2, name: "Jack" },
-    { id: 3, name: "Angus" },
-    { id: 4, name: "Henley" },
-    { id: 5, name: "Derkins" },
-    { id: 6, name: "Checkers" }
-  ];
-
-  ownersFromAPI = [
-
-{
-    id: 1,
-    name: "Ryan Tanay",
-    phone: "555-555-5555",
-    email: "ryan@ryan.com"
-},
-{
-    id: 2,
-    name: "Emma Beaton",
-    phone: "555-555-5555",
-    email: "ryan@ryan.com"
-},
-{
-    id: 3,
-    name: "Dani Adkins",
-    phone: "555-555-5555",
-    email: "ryan@ryan.com"
-},
-{
-    id: 4,
-    name: "Adam Oswalt",
-    phone: "555-555-5555",
-    email: "ryan@ryan.com"
-},
-{
-    id: 5,
-    name: "Fletcher Bangs",
-    phone: "555-555-5555",
-    email: "ryan@ryan.com"
-},
-{
-    id: 6,
-    name: "Angela Lee",
-    phone: "555-555-5555",
-    email: "ryan@ryan.com"
-},
-
-  ];
-
-  ownersPetsFromAPI = [
-    { id: 1, ownerId: 1, petId: 6 },
-    { id: 2, ownerId: 2, petId: 5 },
-    { id: 3, ownerId: 3, petId: 4 },
-    { id: 4, ownerId: 3, petId: 6 },
-    { id: 5, ownerId: 4, petId: 1 },
-    { id: 6, ownerId: 4, petId: 2 },
-    { id: 7, ownerId: 4, petId: 3 }
-  ];
 
   state = {
-    employees: this.employeesFromAPI,
-    locations: this.locationsFromAPI,
-    animals: this.animalsFromAPI,
-    animalOwners: this.ownersPetsFromAPI,
-    owners: this.ownersFromAPI
+    employees: [],
+    locations: [],
+    animals: [],
+    animalOwners: [],
+    owners: []
   };
+
+  componentDidMount() {
+    const newState = {}
+
+    fetch("http://localhost:5002/animals")
+        .then(r => r.json())
+        .then(animals => newState.animals = animals)
+        .then(() => fetch("http://localhost:5002/employees")
+        .then(r => r.json()))
+        .then(employees => newState.employees = employees)
+        .then(() => fetch("http://localhost:5002/Locations")
+        .then(r => r.json()))
+        .then(locations => newState.locations = locations)
+        .then(() => fetch("http://localhost:5002/animalOwners")
+        .then(r => r.json()))
+        .then(animalOwners => newState.animalOwners = animalOwners)
+        .then(() => fetch("http://localhost:5002/owners")
+        .then(r => r.json()))
+        .then(owners => newState.owners = owners)
+        .then(() => this.setState(newState))
+}
 
   render() {
     return (
