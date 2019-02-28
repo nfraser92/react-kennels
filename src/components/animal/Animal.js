@@ -17,7 +17,7 @@ class Animal extends Component {
                     <h5 className="card-title">
                         <img src={dog} className="icon--dog" alt="dog--icon"/>
                         <div>{this.props.animal.name}</div>
-                        <div className="OwnerList">({this.props.owners.join(", ")})</div>
+                        <div>Owner(s)({this.props.owners.join(", ")})</div>
                         <button
                             onClick={() => this.props.deleteAnimal(this.props.animal.id)}
                             className="card-link">Discharge Animal</button>

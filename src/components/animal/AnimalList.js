@@ -23,7 +23,7 @@ class AnimalList extends Component {
                             deleteAnimal={this.props.deleteAnimal}
                             owners={
                                 this.props.animalOwners
-                                .filter(ao => ao.animalId === animal.id)
+                                .filter(ao => ao.petId === animal.id)
                                 .map(ao =>
                                     this.props.owners.find(
                                         o => o.id === ao.ownerId
