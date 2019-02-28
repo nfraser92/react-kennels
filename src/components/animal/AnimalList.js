@@ -1,31 +1,42 @@
 import React, { Component } from 'react'
-import Animal from './Animal';
 import "./AnimalList.css"
+import Animal from './Animal';
+
+
+
 
 
 class AnimalList extends Component {
+    componentDidMount() {
+
+    }
+
+
     render() {
+
         return (
-            <section className="animals">
-                <h1>Animals</h1>
+            <article className="animals">
                 {
                     this.props.animals.map(animal =>
                         <Animal key={`animal-${animal.id}`}
                             animal={animal}
+                            deleteAnimal={this.props.deleteAnimal}
                             owners={
                                 this.props.animalOwners
-                                    .filter(ao => ao.petId === animal.id)
-                                    .map(ao =>
-                                        this.props.owners.find(
-                                            o => o.id === ao.ownerId
+                                .filter(ao => ao.animalId === animal.id)
+                                .map(ao =>
+                                    this.props.owners.find(
+                                        o => o.id === ao.ownerId
                                         ).name
+                                        )
+                                    } />
                                     )
-                            } />
-                    )
-                }
-            </section>
-        )
-    }
+                                }
+
+            </article>
+
+)
+}
 }
 
 export default AnimalList

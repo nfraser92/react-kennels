@@ -12,6 +12,10 @@ export default class OwnerList extends Component{
                     <div><h6>{owner.name}</h6></div>
                     <div>{owner.phone}</div>
                     <div>{owner.email}</div>
+                    <button onClick={() => {
+                                this.props.deleteOwners(owner.id)
+                            }}
+                        >Remove Customer</button>
                     </div>)
             }
             </article>
