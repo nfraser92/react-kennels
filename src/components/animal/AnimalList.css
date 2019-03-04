@@ -15,7 +15,7 @@
 
 .card-title {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -25,6 +25,17 @@
     font-size: 0.7em;
 }
 
-.ownerList {
-    font-size: 0.75em;
+.OwnerList {
+    display: flex;
+    font-size: 0.8em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+
 }
+
+.animalButton {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+  }

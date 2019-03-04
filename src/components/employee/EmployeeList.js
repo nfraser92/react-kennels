@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./Employee.css"
 
 
 class EmployeeList extends Component {
@@ -10,6 +11,14 @@ class EmployeeList extends Component {
     return (
             <section className="employees">
             <h1>Employees</h1>
+            <div className="employeeButton">
+            <button type="button"
+                    className="employee-button"
+                    onClick={() => {
+                        this.props.history.push("/employees/new")
+                    }}> Add New Employee
+                    </button>
+            </div>
             {
                 this.props.employees.map(employee =>
                     <div key={employee.id}>

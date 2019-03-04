@@ -1,22 +1,30 @@
 import React, { Component } from 'react'
-import "./owner.css"
+import "./Owner.css"
 
-export default class OwnerList extends Component{
+export default class OwnerList extends Component {
     render () {
         return (
             <article className="Owners">
             <h1>Owners</h1>
+            <div className="OwnerButton">
+            <button type="button"
+                    className="Owner-button"
+                    onClick={() => {
+                        this.props.history.push("/owners/new")
+                    }}> Add New Owner
+                    </button>
+            </div>
             {
                 this.props.owners.map(owner =>
                     <div key={owner.id}>
                     <div><h6>{owner.name}</h6></div>
-                    <div>{owner.phone}</div>
-                    <div>{owner.email}</div>
-                    <button onClick={() => {
-                                this.props.deleteOwners(owner.id)
+                    <div>Phone: {owner.phone}</div>
+                    <button className="deleteButton" onClick={() => {
+                                this.props.deleteOwner(owner.id)
                             }}
                         >Remove Customer</button>
-                    </div>)
+                    </div>
+                    )
             }
             </article>
         )
