@@ -129,6 +129,14 @@ class ApplicationViews extends Component {
             return <Redirect to="/login" />
           }
         }} />
+        <Route exact path="/locations" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <LocationList locations={this.state.locations}
+                                 {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
 
             <Route exact path="/locations/new" render={(props) => {
                 return <LocationForm locations={this.state.locations}
@@ -140,10 +148,10 @@ class ApplicationViews extends Component {
             <Route exact path="/animals" render={(props) => {
               if (this.isAuthenticated()) {
                 return <AnimalList animals={this.state.animals}
-                animalOwners={this.state.animalOwners}
-                owners={this.state.owners}
-                deleteAnimal={this.deleteAnimal}
-                {...props} />
+                                   animalOwners={this.state.animalOwners}
+                                   owners={this.state.owners}
+                                   deleteAnimal={this.deleteAnimal}
+                                   {...props} />
               } else {
                 return <Redirect to="/login" />
               }
@@ -181,13 +189,13 @@ class ApplicationViews extends Component {
                 return <OwnerList deleteOwner={this.deleteOwner}
                                   owners={this.state.owners}
                                   {...props} />
-                                  } else {
-                                    return <Redirect to="/login" />
+                } else {
+                    return <Redirect to="/login" />
                                 }
             }} />
 
             <Route exact path="/owners/new" render={(props) => {
-                return <OwnerForm {...props}
+                return <OwnerForm  {...props}
                                    addOwner={this.addOwner}
                                    owners={this.state.owners} />
 

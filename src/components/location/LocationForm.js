@@ -1,55 +1,74 @@
 import React, { Component } from "react";
 
-export default class LocationForm extends Component {
-    // Set the initial state
-    state = {
-        locationName: "",
-        locationAddress: ""
-    }
+export default class EmployeeForm extends Component {
+  // Set initial state
+  state = {
+    locationName: "",
+    locationAddress: ""
+  };
 
-    handleFieldChange = evt => {
-        const stateToChange = {};
-        stateToChange[evt.target.id] = evt.target.value
-        this.setState(stateToChange)
-    }
+  // Update state whenever an input field is edited
+  handleFieldChange = evt => {
+    const stateToChange = {};
+    stateToChange[evt.target.id] = evt.target.value;
+    this.setState(stateToChange);
+  };
 
-    constructNewLocation = evt => {
-        evt.preventDefault()
-        if (this.state.location === "") {
-        window.alert("Please enter location info");
+  /*
+        Local method for validation, creating animal object, and
+        invoking the function reference passed from parent component
+     */
+  constructNewLocation = evt => {
+    evt.preventDefault();
+    if (this.state.location === "") {
+      window.alert("Please enter a name");
     } else {
-        const location = {
-            name: this.state.locationName,
-            address: this.state.locationAddress
-        };
+      const location = {
+        name: this.state.locationName,
+        address: this.state.locationAddress
+      };
 
-        this.props.addLocation(location)
-        .then(() => this.props.history.push("/"))
+      // Create the animal and redirect user to location list
+      this.props.addLocation(location)
+        .then(() => this.props.history.push("/"));
     }
-}
+  };
 
-render() {
+  render() {
     return (
-        <React.Fragment>
-            <form className ="locationForm">
-              <div className="form-group">
-                <label htmlFor="locationName">Location Name</label>
-                <input type ="text" required className="form-control"
-                onChange={this.handleFieldChange} id="locationName"
-                placeholder="Enter Location Name" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="locationAddress">Location Address</label>
-                <input type ="text" required className="form-control"
-                onChange={this.handleFieldChange} id="locationAddress"
-                placeholder="Enter Location Address" />
-              </div>
-              <button type="submit"
-              onClick={this.props.constructNewLocation}
-              className="btn btn-primary">
-              Add Location</button>
-            </form>
-        </React.Fragment>
-    )
-}
+      <React.Fragment>
+        <form className="locationForm">
+          <div className="form-group">
+            <label htmlFor="locationName">Location name</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={this.handleFieldChange}
+              id="locationName"
+              placeholder="Location name"
+              />
+          </div>
+          <div className="form-group">
+            <label htmlFor="locationAddress">Location Address</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              onChange={this.handleFieldChange}
+              id="locationAddress"
+              placeholder="Location Address"
+              />
+          </div>
+          <button
+            type="submit"
+            onClick={this.constructNewLocation}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+          </form>
+              </React.Fragment>
+    );
+  }
 }

@@ -13,11 +13,12 @@ export default class LocationList extends Component {
             <section className="locations">
             <h1>Locations</h1>
             <div className="locationButton">
-                <button type="button"
-                className="locationButton"
-                onClick={() => {
-                    this.props.history.push("/Locations/new")}}>
-                Add New Location</button>
+            <button type="button"
+                    className="location-button"
+                    onClick={() => {
+                        this.props.history.push("/locations/new")
+                    }}> Add New Location
+                    </button>
             </div>
             {
                 this.props.locations.map(location =>
