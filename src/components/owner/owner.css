@@ -1,3 +1,7 @@
-.card-body {
-    border: 1px solid salmon
+
+.owner-card {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: 1px solid black
 }

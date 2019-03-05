@@ -2,15 +2,18 @@
   "employees": [
     {
       "id": 1,
-      "name": "Jessica Newell"
+      "name": "Jessica Newell",
+      "locationId": 1
     },
     {
       "id": 3,
-      "name": "Nate Chamberlin"
+      "name": "Nate Chamberlin",
+      "locationId": 1
     },
     {
       "name": "Harold",
-      "id": 4
+      "id": 4,
+      "locationId": 1
     }
   ],
   "Locations": [
@@ -42,7 +45,7 @@
     },
     {
       "id": 2,
-      "name": "Angus",
+      "name": "Gus",
       "breed": "Lab",
       "employeeId": 3
     },
@@ -63,6 +66,21 @@
       "id": 2,
       "name": "Paul",
       "phone": "555-555-5555"
+    },
+    {
+      "name": "Fiona",
+      "phone": "111-111-1111",
+      "id": 3
+    },
+    {
+      "name": "Shaun",
+      "phone": "123-456-7890",
+      "id": 4
+    },
+    {
+      "name": "Bryan",
+      "phone": "333-555-6675",
+      "id": 5
     }
   ],
   "animalOwners": [

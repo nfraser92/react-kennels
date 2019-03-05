@@ -39,3 +39,7 @@
     justify-content: space-evenly;
     margin: 0 0 10px 0;
   }
+
+  .btn {
+      margin: 10px
+  }

@@ -5,10 +5,12 @@ export default class OwnerList extends Component {
     render () {
         return (
             <article className="Owners">
+            <div className="page-title">
             <h1>Owners</h1>
+            </div>
             <div className="OwnerButton">
             <button type="button"
-                    className="Owner-button"
+                    className="add-owner-button"
                     onClick={() => {
                         this.props.history.push("/owners/new")
                     }}> Add New Owner
@@ -16,7 +18,7 @@ export default class OwnerList extends Component {
             </div>
             {
                 this.props.owners.map(owner =>
-                    <div key={owner.id}>
+                    <div className="ownerCard" key={owner.id}>
                     <div><h6>{owner.name}</h6></div>
                     <div>Phone: {owner.phone}</div>
                     <button className="deleteButton" onClick={() => {
