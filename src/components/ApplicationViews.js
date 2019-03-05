@@ -14,6 +14,7 @@ import EmployeeForm from "./employee/EmployeeForm";
 import LocationForm from "./location/LocationForm";
 import OwnerForm from "./owner/OwnerForm";
 import Login from "./authentication/Login"
+import EmployeeDetail from "./employee/EmployeeDetail";
 
 
 class ApplicationViews extends Component {
@@ -151,6 +152,7 @@ class ApplicationViews extends Component {
                                    animalOwners={this.state.animalOwners}
                                    owners={this.state.owners}
                                    deleteAnimal={this.deleteAnimal}
+                                   employees={this.state.employees}
                                    {...props} />
               } else {
                 return <Redirect to="/login" />
@@ -169,14 +171,17 @@ class ApplicationViews extends Component {
                                    employees={this.state.employees} />
             }} />
 
-            <Route exact path="/employees" render={props => {
-                if (this.isAuthenticated()) {
-                    return <EmployeeList deleteEmployee={this.deleteEmployee}
-                                         employees={this.state.employees} />
-                } else {
-                    return <Redirect to="/login" />
-                }
-            }} />
+          <Route exact path="/employees" render={props => {
+              if (this.isAuthenticated()) {
+                  return <EmployeeList    deleteEmployee={this.deleteEmployee}
+                                          animals={this.state.animals}
+                                          employees={this.state.employees} />
+              } else {
+                  return <Redirect to="/login" />
+              }
+          }} />
+
+
 
               <Route exact path="/employees/new" render={(props) => {
                 return <EmployeeForm {...props}
@@ -184,6 +189,13 @@ class ApplicationViews extends Component {
                                    employees={this.state.employees} />
 
             }} />
+              <Route exact path="/employees/:employeeId(\d+)" render={(props) => {
+                return <EmployeeDetail {...props}
+                                   deleteEmployee={this.deleteEmployee}
+                                   addEmployee={this.addEmployee}
+                                   employees={this.state.employees} />
+            }} />
+
             <Route exact path="/owners" render={(props) => {
                 if (this.isAuthenticated()) {
                 return <OwnerList deleteOwner={this.deleteOwner}

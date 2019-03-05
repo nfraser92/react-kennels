@@ -1,51 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 import "./AnimalList.css"
-import Animal from './Animal';
+import AnimalCard from "./AnimalCard"
 
-
-
-
-
-class AnimalList extends Component {
-    componentDidMount() {
-
-    }
-
-
-    render() {
-
+export default class AnimalList extends Component {
+    render () {
         return (
-            <article className="animals">
-            <div className="animalButton">
+            <React.Fragment>
+                <div className="animalButton">
                     <button type="button"
-                            className="btn btn-success"
-                            onClick={() => {
-                                this.props.history.push("/animals/new")}
-                            }>
+                            onClick={()=> this.props.history.push("/animals/new")}
+                            className="btn btn-success">
                         Admit Animal
                     </button>
                 </div>
+                <section className="animals">
                 {
                     this.props.animals.map(animal =>
-                        <Animal key={`animal-${animal.id}`}
-                            animal={animal}
-                            deleteAnimal={this.props.deleteAnimal}
-                            owners={
-                                this.props.animalOwners
-                                .filter(ao => ao.animalId === animal.id)
-                                .map(ao =>
-                                    this.props.owners.find(
-                                        o => o.id === ao.ownerId
-                                        ).name
-                                        )
-                                    } />
-                                    )
-                                }
-
-            </article>
-
-)
+                        <AnimalCard key={animal.id} animal={animal} {...this.props} />
+                    )
+                }
+                </section>
+            </React.Fragment>
+        )
+    }
 }
-}
-
-export default AnimalList
